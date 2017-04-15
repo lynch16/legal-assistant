@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Entity, type: :model do
   describe "validations" do
-    it "is valid with a name, and address" do
+    it "is valid with a name, tax_id and address" do
       entity = build(:entity)
       expect(entity).to be_valid
     end

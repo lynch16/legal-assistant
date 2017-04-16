@@ -48,6 +48,13 @@ RSpec.describe Property, type: :model do
     end
   end
 
+  describe "associations" do
+    it "has many loans" do
+      assc = described_class.reflect_on_association(:loans)
+      expect(assc.macro).to eq :has_many
+    end
+  end
+
   it "has a valid factory" do
     expect(build(:property)).to be_valid
   end

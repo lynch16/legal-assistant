@@ -6,6 +6,8 @@ class Property
 
   validate :address_has_all_fields
 
+  has_many :loans
+
   private
   def address_has_all_fields
     if !self.address.is_a?(Hash)

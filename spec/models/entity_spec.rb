@@ -18,6 +18,21 @@ RSpec.describe Entity, type: :model do
     end
   end
 
+  describe "associations" do
+    it "has many loans" do
+      assc = described_class.reflect_on_association(:loans)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+    it "has many loan_guarantees" do
+      assc = described_class.reflect_on_association(:loan_guarantees)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+    it "has many principals" do
+      assc = described_class.reflect_on_association(:principals)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+  end
+
   it "has a valid factory" do
     expect(build(:entity)).to be_valid
   end

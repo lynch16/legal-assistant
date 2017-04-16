@@ -23,12 +23,24 @@ RSpec.describe Loan, type: :model do
     end
   end
 
-  # describe "associations" do
-  #   it "has many banks" do
-  #     assc = described_class.reflect_on_association(:banks)
-  #     expect(assc.macro).to eq :has_many_and_belongs_to
-  #   end
-  # end
+  describe "associations" do
+    it "has many banks" do
+      assc = described_class.reflect_on_association(:banks)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+    it "has many borrowers" do
+      assc = described_class.reflect_on_association(:borrowers)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+    it "has many guarantors" do
+      assc = described_class.reflect_on_association(:guarantors)
+      expect(assc.macro).to eq :has_and_belongs_to_many
+    end
+    it "belongs to a property" do
+      assc = described_class.reflect_on_association(:property)
+      expect(assc.macro).to eq :belongs_to
+    end
+  end
 
   it "has a valid factory" do
     expect(build(:loan)).to be_valid
